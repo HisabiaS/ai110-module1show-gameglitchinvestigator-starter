@@ -46,8 +46,6 @@ A number-guessing game built with Streamlit. The player picks a difficulty, gets
 
 ## 📸 Demo
 
-- [ ] [Insert a screenshot of your fixed, winning game here]
+- <img width="1874" height="912" alt="image" src="https://github.com/user-attachments/assets/4804bb09-0d25-4945-b992-93a7b455b856" />
 
-## 🚀 Stretch Features
 
-- [ ] [If you choose to complete Challenge 4, insert a screenshot of your Enhanced Game UI here]
