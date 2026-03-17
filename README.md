@@ -25,9 +25,24 @@ It wrote the code, ran away, and now the game is unplayable.
 
 ## 📝 Document Your Experience
 
-- [ ] Describe the game's purpose.
-- [ ] Detail which bugs you found.
-- [ ] Explain what fixes you applied.
+**Game purpose:**
+A number-guessing game built with Streamlit. The player picks a difficulty, gets a limited number of attempts, and receives higher/lower hints after each guess. A score is tracked based on how quickly they find the secret number.
+
+**Bugs found:**
+
+| # | Bug | Location |
+|---|-----|----------|
+| 1 | New Game button did nothing after a win or loss — game stayed frozen | `app.py` New Game handler |
+| 2 | Hints were reversed — "Go HIGHER!" when guess was too high, "Go LOWER!" when too low | `check_guess` in `app.py` |
+| 3 | New Game always picked a secret from 1–100, ignoring the selected difficulty range | `app.py` line 136 |
+
+**Fixes applied:**
+
+- **Bug 1:** Added `st.session_state.status = "playing"` and `st.session_state.history = []` to the New Game handler so the game fully resets on rerun.
+- **Bug 2:** Swapped the hint messages in `check_guess` — `guess > secret` now correctly returns "Go LOWER!" and `guess < secret` returns "Go HIGHER!".
+- **Bug 3:** Changed `random.randint(1, 100)` to `random.randint(low, high)` in the New Game handler so it respects the difficulty range.
+- **Refactor:** Moved all four logic functions (`get_range_for_difficulty`, `parse_guess`, `check_guess`, `update_score`) from `app.py` into `logic_utils.py` and updated `app.py` to import them.
+- **Tests:** Fixed the broken starter tests and added 8 new pytest cases targeting each bug.
 
 ## 📸 Demo
 
